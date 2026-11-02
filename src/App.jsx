@@ -262,7 +262,7 @@ function App() {
 
               <div className="timeline-item left">
                 <div className="timeline-dot"></div>
-                <span className="timeline-year">2012 - 2014</span>
+                <span className="timeline-year">2010 - 2012</span>
                 <div className="timeline-card">
                   <h3>Master Pro. Sécurité des SI</h3>
                   <p>Mention Très Bien — ISG Tunis</p>
@@ -272,7 +272,7 @@ function App() {
 
               <div className="timeline-item right">
                 <div className="timeline-dot"></div>
-                <span className="timeline-year">2008 - 2011</span>
+                <span className="timeline-year">2007 - 2010</span>
                 <div className="timeline-card">
                   <h3>Licence Informatique de Gestion</h3>
                   <p>Mention Bien — ISG Tunis</p>
