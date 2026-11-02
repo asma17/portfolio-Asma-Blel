@@ -285,7 +285,7 @@ function App() {
                 <span className="timeline-year">2007</span>
                 <div className="timeline-card">
                   <h3>Baccalauréat Économie et Gestion</h3>
-                  <p>Mention Bien — Promotion 2007</p>
+                  <p>Mention Bien</p>
                 </div>
               </div>
 
