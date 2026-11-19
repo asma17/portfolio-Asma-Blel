@@ -3,6 +3,38 @@ import BackgroundAnimation from './components/BackgroundAnimation';
 import { Mail, Phone, MapPin, Download, Cpu } from 'lucide-react';
 import profileImg from './assets/avatar.jpg';
 
+function Project({ title, description, items, stack, clients }) {
+  return (
+    <div>
+      <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>{title}</h4>
+      {description && (
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '4px', fontStyle: 'italic' }}>{description}</p>
+      )}
+      <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
+        {items.map((item) => <li key={item}>{item}</li>)}
+      </ul>
+      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+        <strong>Stack :</strong> {stack} <br />
+        <strong>Clients :</strong> {clients}
+      </p>
+    </div>
+  );
+}
+
+function Experience({ title, period, children }) {
+  return (
+    <div className="content-card" style={{ marginBottom: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap' }}>
+        <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f172a' }}>{title}</h3>
+        <span style={{ fontSize: '0.9rem', color: '#2563eb', fontWeight: 600 }}>{period}</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div>
@@ -14,7 +46,7 @@ function App() {
           <img src={profileImg} alt="Asma Blel" className="profile-img" />
           <div className="header-text">
             <h1>Asma Blel</h1>
-            <h2>Développeuse PHP & Symfony Senior (+10 ans d'expérience)</h2>
+            <h2>Développeuse Web Senior PHP & Symfony (+10 ans d'expérience)</h2>
             
             <div className="contacts-list">
               <a href="mailto:asmaablel@gmail.com" className="contact-item">
@@ -56,7 +88,10 @@ function App() {
             <h2 className="handwritten-title">Profil</h2>
             <div className="content-card">
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                Développeuse Web Senior spécialisée dans la conception d'architectures back-end robustes et d'APIs REST scalables. Forte de <strong>plus de 10 ans d'expérience</strong> au service de grands comptes et d'éditeurs de premier plan (La Poste, Crédit Agricole, Covéa, CDC Habitat, Attijari Bank), j'associe la rigueur technique de l'écosystème <strong>Symfony</strong> à des méthodes de développement moderne augmentées par l'Intelligence Artificielle.
+                Développeuse Web Senior Back-end PHP / Symfony (<strong>+10 ans d'expérience</strong>) spécialisée dans le développement d'applications web robustes, maintenables et scalables. Maîtrise approfondie de <strong>PHP</strong>, <strong>Symfony</strong>, <strong>Doctrine ORM</strong>, des <strong>API REST</strong> et de <strong>Git</strong>, ainsi que de l'IDE <strong>Cursor</strong> et d'agents sur mesure pour accélérer le développement, l'optimisation et le refactoring.
+              </p>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.7', marginTop: '12px', color: 'var(--text-secondary)' }}>
+                <strong>Références projets grands comptes :</strong> La Poste française, La Banque Postale, Crédit Agricole, CDC Habitat, Covéa, Pierre Fabre, Attijari Bank, DDB, Alchimie, Baker McKenzie, Meeschaert.
               </p>
             </div>
           </section>
@@ -69,10 +104,10 @@ function App() {
                 <Cpu size={24} color="#2563eb" /> Ingénierie Augmentée & SecOps
               </h3>
               <p style={{ fontSize: '1.02rem', lineHeight: '1.7', marginBottom: '12px' }}>
-                Intégration quotidienne de <strong>Cursor IA</strong> et conception d'agents autonomes sur mesure pour accélérer le développement d'APIs, automatiser les tests end-to-end (Playwright) et optimiser les performances logicielles.
+                Utilisation quotidienne de <strong>Cursor</strong> (IDE assisté par IA), du prompting et d'agents sur mesure pour accélérer le développement, l'optimisation et le refactoring, avec un contrôle qualité continu (<strong>PHPStan</strong>, revue de code).
               </p>
               <p style={{ fontSize: '1.02rem', lineHeight: '1.7' }}>
-                Titulaire d'un Master en Sécurité des Systèmes d'Information, j'applique rigoureusement les normes de conformité <strong>ISO 27001 / 27002 / 27005</strong> et garantis l'étanchéité applicative (JWT, Guard, LDAP) dès la phase de conception.
+                Titulaire d'un Master en Sécurité des Systèmes d'Information (normes <strong>ISO 27001 / 27002 / 27005</strong>), j'intègre la sécurité applicative dès la conception : Voters Symfony, <strong>JWT</strong>, <strong>OAuth 2.0</strong>, LDAP.
               </p>
             </div>
           </section>
@@ -83,44 +118,46 @@ function App() {
             <div className="skills-grid">
               
               <div className="skill-col">
-                <div className="skill-header">Web & Architecture</div>
+                <div className="skill-header">Back-end</div>
                 <ul className="skill-list">
-                  <li>PHP (5.6 à 8+)</li>
+                  <li>PHP natif (5.6 à 8.1)</li>
                   <li>Symfony (2.8 à 6.4)</li>
-                  <li>APIs REST & Auth JWT</li>
+                  <li>API REST, API Platform, Swagger</li>
                   <li>Doctrine ORM / DBAL</li>
-                  <li>Clean Architecture / DDD</li>
-                  <li>Twig & Webpack Encore</li>
+                  <li>Sécurité : Voters, JWT, OAuth 2.0</li>
+                  <li>LDAP & tâches planifiées (Cron)</li>
                 </ul>
               </div>
 
               <div className="skill-col">
-                <div className="skill-header">Données & Systèmes</div>
-                <ul className="skill-list">
-                  <li>MySQL & SQL Server</li>
-                  <li>Annuaire LDAP & Cron</li>
-                  <li>Algolia Search Engine</li>
-                  <li>Dompdf & PhpSpreadsheet</li>
-                </ul>
-              </div>
-
-              <div className="skill-col">
-                <div className="skill-header">IA & DevOps</div>
-                <ul className="skill-list">
-                  <li>Cursor IA</li>
-                  <li>Agents IA dédiés</li>
-                  <li>Git / GitLab CI-CD</li>
-                  <li>Playwright E2E</li>
-                </ul>
-              </div>
-
-              <div className="skill-col">
-                <div className="skill-header">Front-End & Gestion</div>
+                <div className="skill-header">Front-end & Intégration</div>
                 <ul className="skill-list">
                   <li>JavaScript / jQuery</li>
-                  <li>Bootstrap / HTML5 / CSS3</li>
-                  <li>Niveau Angular 19 & React</li>
-                  <li>Agilité Scrum / Jira</li>
+                  <li>HTML5 / CSS3 / Bootstrap</li>
+                  <li>Twig & Webpack Encore</li>
+                  <li>Intégration Figma</li>
+                  <li>Notions : Angular 19, AngularJS, ReactJS</li>
+                </ul>
+              </div>
+
+              <div className="skill-col">
+                <div className="skill-header">DevOps, IA & Qualité</div>
+                <ul className="skill-list">
+                  <li>Git / GitLab, GitLab CI/CD</li>
+                  <li>Docker (notions)</li>
+                  <li>Cursor (IDE assisté par IA) & Prompting</li>
+                  <li>PHPStan & revue de code</li>
+                  <li>Optimisation</li>
+                </ul>
+              </div>
+
+              <div className="skill-col">
+                <div className="skill-header">Données & Méthodes</div>
+                <ul className="skill-list">
+                  <li>MySQL & SQL Server</li>
+                  <li>Agilité / Scrum</li>
+                  <li>Jira, Confluence, Trello</li>
+                  <li>Rédaction & analyse de cahiers des charges</li>
                 </ul>
               </div>
 
@@ -131,128 +168,155 @@ function App() {
           <section>
             <h2 className="handwritten-title">Expériences</h2>
 
-            {/* Netisse */}
-            <div className="content-card" style={{ marginBottom: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f172a' }}>Développeur Web Senior — Netisse (Télétravail)</h3>
-                <span style={{ fontSize: '0.9rem', color: '#2563eb', fontWeight: 600 }}>Juin 2020 - Présent</span>
-              </div>
-              
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '16px' }}>
-                Conception et développement de solutions logicielles et plateformes web sur mesure pour des clients prestigieux. Avec l'intégration active de <strong>Cursor IA</strong>, création d'<strong>agents IA</strong> dédiés et gestion des dépôts <strong>Git</strong>.
-              </p>
+            <Experience title="Développeuse Web Senior — Netisse (Télétravail)" period="Juin 2020 - Présent">
+              <Project
+                title="Welcome Touch Screen (système d'accueil bancaire)"
+                description="Gestion de files d'attente en agence bancaire (bornes, écrans conseillers, affichage TV)."
+                items={[
+                  'Réalisé le module statistique : tableaux de bord managers, graphiques amCharts / SVGGraph, exports PDF / CSV.',
+                  'Développé les différents modules du back-office : catégories, motifs, sites, bornes, configurations, conseillers.',
+                  "Migré l'affichage de la file d'attente et la borne vers la nouvelle charte graphique, à partir des maquettes Figma.",
+                  'Fait évoluer ponctuellement les interfaces front (AngularJS).',
+                ]}
+                stack="PHP 7/8.1, AngularJS, amCharts, SVGGraph"
+                clients="Crédit Agricole (réseau d'agences), Attijari Bank"
+              />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                
-                {/* 1. Welcome Hospitality */}
-                <div>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>Produit Welcome Hospitality (Bornes & Dashboard)</h4>
-                  <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                    <li>Développement d'une application multi-modules pour gérer l'accueil digital en agence (interfaces tactiles, écrans de veille).</li>
-                    <li>Configuration des sites, bornes, contenus, utilisateurs/droits via un back-office et mesure d'usage via le module statistique.</li>
-                  </ul>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                    <strong>Stack:</strong> PHP (API REST), Angular 19, HTML/CSS, Git, GitLab, MySQL, Cursor IA <br />
-                    <strong>Clients:</strong> CDC Habitat, Selha Group, Constructel
-                  </p>
-                </div>
+              <Project
+                title="Welcome Hospitality (bornes & dashboard)"
+                description="Plateforme d'accueil visiteur combinant des bornes interactives (Angular) et un back-office de pilotage et statistiques (API PHP)."
+                items={[
+                  "Conçu l'API REST et le back-office de configuration multi-sites (sites, bornes, utilisateurs, motifs, orientations).",
+                  'Livré le module statistique du back-office et contribué aux interfaces tactiles en Angular 19.',
+                ]}
+                stack="PHP 8.1 (API REST), Angular 19, MySQL"
+                clients="CDC Habitat, Selha Group, Constructel"
+              />
 
-                {/* 2. Welcome Touch Screen */}
-                <div>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>Produit Welcome Touch Screen (Système d'accueil bancaire)</h4>
-                  <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                    <li>Développement d'un système de gestion de files d'attente pour les agences bancaires digitalisant le parcours client dès l'entrée.</li>
-                    <li>Orchestration de la file d'attente côté conseillers, outils de pilotage statistiques pour managers et affichage TV dynamique pour le client.</li>
-                  </ul>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                    <strong>Stack:</strong> PHP, TCPDF, amCharts, SVGGraph, jQuery, Bootstrap, AngularJS, Git, Cursor IA, MySQL <br />
-                    <strong>Clients:</strong> Crédit Agricole, Attijari Bank
-                  </p>
-                </div>
+              <Project
+                title="Welcome Event (plateforme événementielle)"
+                description="Plateforme mettant en relation organisateurs, prestataires et auditeurs pour des événements durables."
+                items={[
+                  'Construit les modules du back-office : gestion des utilisateurs, des devis, des audits, des labels et des pages.',
+                  'Intégré ces fonctionnalités côté front (Twig) pour les organisateurs et les prestataires.',
+                ]}
+                stack="PHP 7.2, Symfony 5.4, Doctrine ORM, Twig, Dompdf, Webpack Encore, API Platform"
+                clients="Beevent"
+              />
 
-                {/* 3. Welcome Event */}
-                <div>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>Produit Welcome Event (Plateforme Événementielle)</h4>
-                  <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                    <li>Plateforme métier mettant en relation organisateurs, prestataires et auditeurs pour des événements durables (devis, audits, labels).</li>
-                  </ul>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                    <strong>Stack:</strong> PHP 7.2, Symfony 5.4, Doctrine ORM, Twig, Algolia, Dompdf, Webpack Encore, Git, Cursor IA <br />
-                    <strong>Clients:</strong> Beevent
-                  </p>
-                </div>
+              <Project
+                title="Gestion d'identité de marque (Brand Center)"
+                description="Portail sécurisé de charte graphique et de ressources de marque, avec un back-office éditorial."
+                items={[
+                  'Mis en place le back-office : gestion des rôles et accès, hub éditorial, médiathèque, export PDF, recherche Algolia.',
+                  'Intégré les fonctionnalités sur le portail front.',
+                ]}
+                stack="PHP 8.1, Symfony 6.4, Doctrine, Twig, Algolia, Docker, MySQL"
+                clients="La Poste française, Covéa"
+              />
 
-                {/* 4. Produit Web & Platforms */}
-                <div>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>Produit Web & Platforms</h4>
-                  
-                  <div style={{ marginLeft: '10px', marginTop: '6px' }}>
-                    <p style={{ fontSize: '0.93rem', fontWeight: 600, color: '#0f172a' }}>Application pour la gestion d'identité de marque :</p>
-                    <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                      <li>Conception de la plateforme centralisée de gestion d'identité de marque avec portail sécurisé et back-office éditorial.</li>
-                      <li>Gestion fine des rôles et accès, hub éditorial, export PDF, recherche haute performance (Algolia) et intégration multimédia.</li>
-                    </ul>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
-                      <strong>Stack:</strong> PHP 8.1, Symfony 6.4, Doctrine, Twig, Bootstrap, Webpack Encore, Git, MySQL <br />
-                      <strong>Clients:</strong> La Poste française (Brand Center), Covéa
-                    </p>
+              <Project
+                title="Support & Ticketing"
+                description="Plateforme de gestion des tickets de support."
+                items={[
+                  'Modélisé le back-office : questionnaires dynamiques, workflow de statuts et priorités, traitement des tickets.',
+                  'Mis en place les échanges par commentaires et les notifications email, puis intégré le front (Twig).',
+                ]}
+                stack="PHP 8.0, Symfony 5.4, Doctrine, Twig, Webpack Encore, MySQL"
+                clients="La Poste française & Pierre Fabre"
+              />
 
-                    <p style={{ fontSize: '0.93rem', fontWeight: 600, color: '#0f172a' }}>Application pour le Support & Ticketing :</p>
-                    <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                      <li>Création d'une plateforme centralisée de gestion de tickets avec création de questionnaires dynamiques, workflow de statuts, priorités, traitement en back-office et échanges par commentaires et emails.</li>
-                    </ul>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
-                      <strong>Stack:</strong> PHP 8.0, Symfony 5.4, Doctrine, Twig, Bootstrap, Webpack Encore, Git, MySQL <br />
-                      <strong>Clients:</strong> Netisse
-                    </p>
+              <Project
+                title="Agenda d'événements"
+                description="Plateforme de gestion d'événements multi-sites."
+                items={[
+                  "Développé le back-office d'administration : événements, inscriptions, utilisateurs, rôles et statistiques.",
+                  'Conçu les API sécurisées puis intégré le front (Twig).',
+                ]}
+                stack="PHP 8.0, Symfony 5.4, Doctrine, Twig, MySQL"
+                clients="La Banque Postale"
+              />
 
-                    <p style={{ fontSize: '0.93rem', fontWeight: 600, color: '#0f172a' }}>Application Agenda d'événements :</p>
-                    <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                      <li>Développement d'un back-office d'administration et mise en place des API sécurisées pour la gestion d'événements multi-sites, inscriptions, génération de fichiers ICS et statistiques.</li>
-                    </ul>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
-                      <strong>Stack:</strong> PHP 8.0, Symfony 5.4, Doctrine, Twig, Bootstrap, Webpack Encore, Git, MySQL <br />
-                      <strong>Client:</strong> La banque postale française
-                    </p>
+              <Project
+                title="Site institutionnel Netisse (netisse.fr)"
+                description="Site vitrine multilingue FR/EN présentant les solutions de l'entreprise."
+                items={[
+                  'Développé le site et sa gestion de contenu multilingue FR/EN (Symfony Translation).',
+                ]}
+                stack="PHP 8.1, Symfony 5.4, Doctrine, Twig, MySQL"
+                clients="Netisse"
+              />
 
-                    <p style={{ fontSize: '0.93rem', fontWeight: 600, color: '#0f172a' }}>Application OLA Event :</p>
-                    <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.93rem', marginBottom: '6px' }}>
-                      <li>Développement d'une application web qui relie la vitrine d'une agence événementielle, l'espace de ses clients et l'outil interne de suivi des projets. Elle permet de présenter l'offre, de recueillir une demande, puis de faire vivre le projet jusqu'à sa réalisation : propositions, documents, échanges et suivi, chacun selon son rôle.</li>
-                    </ul>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                      <strong>Stack:</strong> PHP 7.1, Symfony 6.4, Git, Cursor IA, MySQL <br />
-                      <strong>Client:</strong> Ola
-                    </p>
-                  </div>
+              <Project
+                title="OLA Event"
+                items={[
+                  "Développement d'une application web qui relie la vitrine d'une agence événementielle, l'espace de ses clients et l'outil interne de suivi des projets. Elle permet de présenter l'offre, de recueillir une demande, puis de faire vivre le projet jusqu'à sa réalisation : propositions, documents, échanges et suivi, chacun selon son rôle.",
+                ]}
+                stack="PHP 7.1, Symfony 6.4, Git, Cursor IA, MySQL"
+                clients="Ola"
+              />
+            </Experience>
 
-                </div>
+            <Experience title="Développeuse Web — GoldenMarket & AHR Consulting (Hybride)" period="Octobre 2019 - Juin 2020">
+              <Project
+                title="Application immobilière"
+                description="Plateforme web de gestion et de publication d'annonces immobilières."
+                items={[
+                  'Développé la création et la publication des annonces (descriptif, caractéristiques, photos, prix).',
+                  'Mis en place la gestion des espaces publicitaires (bannières).',
+                ]}
+                stack="PHP 7.1, Symfony 4, ReactJS, Doctrine, Twig, Bootstrap, MySQL"
+                clients="GoldenMarket"
+              />
 
-              </div>
-            </div>
+              <Project
+                title="Application e-commerce"
+                description="Boutique en ligne de stores et d'équipements sur mesure."
+                items={[
+                  'Fait évoluer les fonctionnalités existantes de la plateforme.',
+                  'Développé les modules de gestion des produits et des catégories du catalogue.',
+                ]}
+                stack="PHP 7.1, Symfony 4, Sylius, ReactJS, Doctrine, Twig, MySQL"
+                clients="StoresDiscount"
+              />
+            </Experience>
 
-            {/* Golden Market & AHRConsulting */}
-            <div className="content-card" style={{ marginBottom: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f172a' }}>Développeuse Web — Golden Market & AHRConsulting (Télétravail)</h3>
-                <span style={{ fontSize: '0.9rem', color: '#2563eb', fontWeight: 600 }}>Octobre 2019 - Juin 2020</span>
-              </div>
-              <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.95rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li><strong>Plateforme Immobilière :</strong> Conception d'une solution de gestion immobilière et rédaction de cahiers des charges. <em>Stack : Symfony 4, Sylius, Zend, ReactJS, Git, MySQL.</em></li>
-                <li><strong>E-commerce (StoresDiscount) :</strong> Développement et maintenance évolutive des modules e-commerce et parcours utilisateurs. <em>Stack : Symfony 4, Sylius, Zend, ReactJS.</em></li>
-              </ul>
-            </div>
+            <Experience title="Développeuse Web & Lead Technique — AppsFactor & WTS-Solutions (Sur site)" period="Février 2015 - Septembre 2019">
+              <Project
+                title="Enso — Plateforme de gestion des collaborateurs"
+                description="Application multi-départements dédiée au parcours d'intégration des collaborateurs, utilisée par jusqu'à 20 000 utilisateurs."
+                items={[
+                  "Lead technique d'une équipe de 4 à 5 développeurs : répartition des tâches, suivi des développements, tests et déploiements.",
+                  'Conçu et développé les fonctionnalités de la plateforme et les intégrations avec les systèmes tiers (LDAP, Office 365, Google Calendar, Zendesk).',
+                  'Rédigé la documentation technique, assuré le support et la relation technique directe avec les clients.',
+                ]}
+                stack="PHP 5.6/7, Symfony 2.8 / 3 / 4, LDAP, Office 365, Doctrine, MySQL, Confluence, Trello"
+                clients="DDB, Alchimie, Baker McKenzie, Wilo, Lanvin, Meeschaert"
+              />
 
-            {/* Appsfactor & WTS-Solutions */}
-            <div className="content-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f172a' }}>Développeuse Web & Lead Technique — Appsfactor & WTS-Solutions (Bizerte)</h3>
-                <span style={{ fontSize: '0.9rem', color: '#2563eb', fontWeight: 600 }}>Février 2015 - Septembre 2019</span>
-              </div>
-              <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '0.95rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li><strong>ENSO & WhoIsWho :</strong> Gestion des employés et annuaire d'entreprise basé sur LDAP avec commandes CRON. Rôle de Lead d'une équipe de 4 à 5 personnes. <em>Stack : Symfony 2.8/3/4, PHP 7, MySQL, jQuery, Bootstrap, API Google & Outlook Calendar, Jira, Confluence. (Clients : DDB, Alchimie, Baker McKenzie, Cabinet Syntec France).</em></li>
-                <li><strong>EasyOnBoard :</strong> Solution SaaS multi-entreprises pour cabinets de recrutement pilotant l'onboarding de candidats. <em>Stack : PHP 7, Symfony 3, API Google & Outlook Calendar.</em></li>
-              </ul>
-            </div>
+              <Project
+                title="EasyOnBoard — Plateforme de gestion des recrutements"
+                description="SaaS multi-entreprises de gestion de l'onboarding candidat pour cabinets de recrutement."
+                items={[
+                  'Pris en charge le projet de bout en bout : rédaction du cahier des charges, conception et développement.',
+                  "Conçu l'architecture multi-clients avec espaces dédiés (superviseurs, managers, candidats).",
+                  'Intégré les API Google Calendar et Outlook Calendar pour la planification des rendez-vous.',
+                ]}
+                stack="PHP 7, Symfony 3, API Google Calendar, API Outlook Calendar, Confluence"
+                clients="Cabinet Syntec France"
+              />
+
+              <Project
+                title="WhoIsWho"
+                description="Annuaire d'entreprise synchronisé avec l'annuaire LDAP."
+                items={[
+                  "Réalisé l'application de bout en bout : back-office, thème graphique et intégration front.",
+                  'Développé la synchronisation LDAP et l\'automatisation des tâches de fond (commandes CRON).',
+                ]}
+                stack="LDAP, PHP 7, Symfony 3, MySQL, jQuery, Confluence"
+                clients="DDB France"
+              />
+            </Experience>
           </section>
 
           {/* DIPLÔMES */}
@@ -266,7 +330,7 @@ function App() {
                 <div className="timeline-card">
                   <h3>Master Pro. Sécurité des SI</h3>
                   <p>Mention Très Bien — ISG Tunis</p>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '4px' }}>ISO 27001/27002/27005 chez Tunisie Telecom</p>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '4px' }}>PFE : Sécurité des SI selon les normes ISO 27001, 27002 et 27005 chez Tunisie Telecom</p>
                 </div>
               </div>
 
@@ -276,7 +340,7 @@ function App() {
                 <div className="timeline-card">
                   <h3>Licence Informatique de Gestion</h3>
                   <p>Mention Bien — ISG Tunis</p>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '4px' }}>Gestion de parc chez la STEG</p>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '4px' }}>PFE : Application de gestion du parc informatique en VB.NET et SQL Server chez la STEG</p>
                 </div>
               </div>
 
@@ -312,9 +376,19 @@ function App() {
               <div className="lang-card">
                 <img src="https://flagcdn.com/w160/gb.png" alt="Drapeau Royaume-Uni" className="lang-flag-img" />
                 <div className="lang-title">Anglais</div>
-                <div className="lang-level">Niveau Intermédiaire</div>
+                <div className="lang-level">Bon niveau technique</div>
               </div>
 
+            </div>
+          </section>
+
+          {/* CENTRES D'INTÉRÊT */}
+          <section>
+            <h2 className="handwritten-title">Centres d'intérêt</h2>
+            <div className="content-card">
+              <p style={{ fontSize: '1rem', lineHeight: '1.7' }}>
+                Suivi des nouveautés IA · Lecture · Sport
+              </p>
             </div>
           </section>
         </main>
